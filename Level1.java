@@ -18,13 +18,15 @@ public class Level1 extends World
         super(1200, 800, 1, false); 
         prepare();
     }
-    
+     private final float GRAVITY = 0.0667f;
+    private final GreenfootSound MUSIC = new GreenfootSound("zapsplat_024.mp3");
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
+
         setPaintOrder(Player.class, Platform.class, Obstacle.class, Collecteble.class,
             Door.class, HUD.class);
         Door door = new Door();
@@ -38,12 +40,21 @@ public class Level1 extends World
         addObject(new BrickWall(), 1000, 575);
         addObject(new BrickWall(),500, 390);
         addObject(new SmBrickWall(), 1000,390 );
-        addObject(new Bomb(), 1039,352);
+        addObject(new Bomb(GRAVITY), 1039,352);
         addObject(new BrickWall(),1220,105);
-        addObject(new Bomb(),550, 770);
+        addObject(new Bomb(GRAVITY),550, 770);
         addObject(new BrickWall(),50, 250);
         addObject(new BrickWall(), 600, 150);
-        addObject(new Bomb(), 200, 533);
-        addObject(new Bomb(), 650,110);
+        addObject(new Bomb(GRAVITY), 200, 533);
+        addObject(new Bomb(GRAVITY), 650,110);
+        addObject(new TrapDoor(GRAVITY), 50, 250);
+        addObject(new TrapDoor(GRAVITY), 500,390);
+        addObject(new TrapDoor(GRAVITY), 500,575);
+        addObject(new Gem(), 600,780);
+        addObject(new Gem(), 602,355);
+        addObject(new Gem(), 152,218);
+        addObject(new Gem(), 1030,72);
+        addObject(new Gem(), 85,538);
+        addObject(new Gem(), 900,540);
     }
 }
