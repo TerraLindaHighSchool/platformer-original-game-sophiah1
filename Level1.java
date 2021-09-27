@@ -57,4 +57,16 @@ public class Level1 extends World
         addObject(new Gem(), 85,538);
         addObject(new Gem(), 900,540);
     }
-}
+     
+    private void spawn()
+    {
+        if(Math.random() < 0.0025)
+        {
+            addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(1200), -30);
+        } 
+  
+
+
+    }
+    
+}   

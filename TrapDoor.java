@@ -21,10 +21,24 @@ public class TrapDoor extends Obstacle
     {
 
     }
+    //causes an object to fall in the foreground and out the bottom
 
     protected void fall()
     { 
-
+        yVelocity+=GRAVITY;
+        setLocation(getX(), getY() +(int) yVelocity);
+        removeOutOfBounds(this);
     }
+        
     
+     
+
+
+
+
 }
+
+
+
+
+

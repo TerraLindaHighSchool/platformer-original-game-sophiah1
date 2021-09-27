@@ -23,9 +23,14 @@ public class Rock extends Obstacle
 
     }
 
+    //Causes the object to fall unto a platform below
     protected void fall()
     { 
-
+    if(!isOnGround())
+    {
+    yVelocity+= GRAVITY;
+    setLocation(getX(), getY()+ (int) yVelocity);
+    }
     }
 
 }
