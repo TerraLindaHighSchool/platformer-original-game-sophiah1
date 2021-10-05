@@ -65,8 +65,6 @@ public class Level1 extends World
             addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(1200), -30);
         } 
   
-
-
     }
     
 }   
