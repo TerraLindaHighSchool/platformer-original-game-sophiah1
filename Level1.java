@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level1 extends World
 {
+    private final float GRAVITY = 0.0667f;
+    private final GreenfootSound MUSIC = new GreenfootSound("zapsplat_024.mp3");
+    
     /**
      * Constructor for objects of class BrickWorld.
      * 
@@ -18,8 +21,7 @@ public class Level1 extends World
         super(1200, 800, 1, false); 
         prepare();
     }
-     private final float GRAVITY = 0.0667f;
-    private final GreenfootSound MUSIC = new GreenfootSound("zapsplat_024.mp3");
+   
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -31,7 +33,7 @@ public class Level1 extends World
             Door.class, HUD.class);
         Door door = new Door();
         addObject(door,815,43);
-        Player player = new Player(3, 5.6f, GRAVITY, 3, 3, Level2.class,MUSIC);
+        Player player = new Player(3, 6.6f, GRAVITY, 3, 3, Level2.class, MUSIC);
         addObject(player,32,742);
         door.setLocation(1163,44);
         addObject(new Floor(), 600, 800);

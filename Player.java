@@ -26,11 +26,14 @@ public class Player extends Actor
     
     public Player(int speed, float jumpForce, float gravity, int maxHealth, int maxPowerUp, Class nextLevel,GreenfootSound music)
     {
-         this.speed = speed;
-         JUMP_FORCE =jumpForce;
-         GRAVITY = gravity;
-         NEXT_LEVEL = nextLevel;
-         MUSIC = music;
+        this.speed = speed;
+        JUMP_FORCE =jumpForce;
+        GRAVITY = gravity;
+        NEXT_LEVEL = nextLevel;
+        MUSIC=music;
+         
+        health = new Health[maxHealth];
+        healthCount = maxHealth;
          
         STANDING_IMAGE=getImage();
         WALK_ANIMATION = new GreenfootImage[]
@@ -60,61 +63,71 @@ public class Player extends Actor
      } 
     }
     
-    public void addedToWorld(World world) {}
+    public void addedToWorld(World world) 
+    {
+        health[0] = new Health();
+        world.addObject(health[0], 30, 36);
+        health[1] = new Health();
+        world.addObject(health[1], 72, 36);
+        health[2] = new Health();
+        world.addObject(health[2], 114, 36);
+    }
+    
     
     private void walk() 
     {
-         if(isWalking)
-       {
-        animator();
-
-       }
-       else
-       {
-       setImage(STANDING_IMAGE);
-       walkIndex = 0;
-       }
-       
-       if(Greenfoot.isKeyDown("right"))
-       {
-         if(isFacingLeft)
-         {
-            mirrorImages();
-         }
-         isWalking = true;
-         isFacingLeft= false;
-         
-         move(speed);
-       }
+           if(isWalking)
+           {
+            animator();
     
-       if(Greenfoot.isKeyDown("left"))
-       {
-        if(!isFacingLeft)
-        {
-            mirrorImages();
-        }
-        isWalking = true;
-        isFacingLeft = true;
-        move(-speed);
-       }
-    
-       if(!Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("left"))
-       {
-        isWalking= false;
-       }
+           }
+           else
+           {
+               setImage(STANDING_IMAGE);
+               walkIndex = 0;
+           }
        
-       if(!(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right")))
-       {
-            isWalking = false;
-       }
+           if(Greenfoot.isKeyDown("right"))
+           {
+             
+            if(isFacingLeft)
+            {
+                mirrorImages();
+            }
+             isWalking = true;
+             isFacingLeft= false;
+            
+             move(speed);
+            if(!MUSIC.isPlaying())
+            {
+               MUSIC.playLoop();
+            }
+    
+           }
+        
+           if(Greenfoot.isKeyDown("left"))
+           {
+                if(!isFacingLeft)
+                {
+                    mirrorImages();
+                }
+                isWalking = true;
+                isFacingLeft = true;
+                move(-speed);
+           }
+    
+           if(!(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right")))
+           {
+                isWalking = false;
+           }
     }
     
     private void jump() 
-    { if(Greenfoot.isKeyDown("space") && isOnGround()) 
-        {
+    {if(Greenfoot.isKeyDown("space") && isOnGround()) 
+     {
             yVelocity = JUMP_FORCE;
             isJumping = true;
-        }
+     }
         
       if(isJumping && yVelocity > 0.0)
       {
@@ -132,7 +145,7 @@ public class Player extends Actor
         if(!isOnGround() && !isJumping)
         {
             setLocation(getX(), getY() - (int) yVelocity);
-            yVelocity -=GRAVITY;
+            yVelocity -= GRAVITY;
         }
     }
     
@@ -154,7 +167,6 @@ public class Player extends Actor
     
     private void onCollision() 
     {
-
       if(isTouching(Door.class))
       {
         World world = null;
@@ -169,11 +181,14 @@ public class Player extends Actor
             System.out.println("Cannot access class constructor");
         } 
         Greenfoot.setWorld(world);
+        MUSIC.stop();
       }
     
       if(isTouching(Obstacle.class))
       {
         removeTouching(Obstacle.class);
+        getWorld().removeObject(health[healthCount - 1]);
+        healthCount--;
       }    
       
       //hit platform but not on ground
@@ -182,7 +197,13 @@ public class Player extends Actor
           yVelocity=-1;
           fall();
       }
-    }  
+      
+      //if(isTouching(Gem.class))
+      //{
+      //removeTouching(Obstacle.class);
+    
+      }
+      
     
     private void mirrorImages() 
     {
@@ -192,7 +213,14 @@ public class Player extends Actor
       }
     }
     
-    private void gameOver(){}
+    private void gameOver()
+    {
+        if(healthCount == 0)
+        {
+            Greenfoot.setWorld(new Level1());
+            
+        }
+    }
     
     private boolean isOnGround()
     {
@@ -200,6 +228,5 @@ public class Player extends Actor
         return ground !=null;
         
     }
-   
+     
 }
-
