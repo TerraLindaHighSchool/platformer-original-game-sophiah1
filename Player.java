@@ -34,6 +34,7 @@ public class Player extends Actor
          
         health = new Health[maxHealth];
         healthCount = maxHealth;
+ 
          
         STANDING_IMAGE=getImage();
         WALK_ANIMATION = new GreenfootImage[]
@@ -53,14 +54,13 @@ public class Player extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
-    {   
-     {     
+    {    
         walk();
         jump();
         fall();
         onCollision();
         gameOver();
-     } 
+      
     }
     
     public void addedToWorld(World world) 
@@ -102,7 +102,7 @@ public class Player extends Actor
             {
                MUSIC.playLoop();
             }
-    
+             
            }
         
            if(Greenfoot.isKeyDown("left"))
@@ -123,21 +123,24 @@ public class Player extends Actor
     }
     
     private void jump() 
-    {if(Greenfoot.isKeyDown("space") && isOnGround()) 
-     {
-            yVelocity = JUMP_FORCE;
-            isJumping = true;
-     }
+    {
+         if(Greenfoot.isKeyDown("space") && isOnGround()) 
+         {
+                yVelocity = JUMP_FORCE;
+                isJumping = true;
+                Greenfoot.playSound("jump.wav");
+         }
         
-      if(isJumping && yVelocity > 0.0)
-      {
-        setLocation(getX(), getY() - (int) yVelocity);
-        yVelocity -=GRAVITY;
-      }
-      else
-      {
-          isJumping= false;
-      }
+          if(isJumping && yVelocity > 0.0)
+          {
+            setLocation(getX(), getY() - (int) yVelocity);
+            yVelocity -=GRAVITY;
+          }
+          else
+          {
+              isJumping= false;
+         }
+      
     }
     
     private void fall()
@@ -150,8 +153,9 @@ public class Player extends Actor
     }
     
     private void animator() 
-    {  if(frame % (15-2* speed) ==0)
-       {
+    {  
+        if(frame % (15-2* speed) ==0)
+        {
           if(walkIndex < WALK_ANIMATION.length)
           {
            setImage(WALK_ANIMATION[walkIndex]);
@@ -161,8 +165,8 @@ public class Player extends Actor
           {
             walkIndex= 0;
           }
-       }
-       frame++;
+        }
+        frame++;
     }
     
     private void onCollision() 
@@ -182,6 +186,7 @@ public class Player extends Actor
         } 
         Greenfoot.setWorld(world);
         MUSIC.stop();
+        Greenfoot.playSound("door_open");
       }
     
       if(isTouching(Obstacle.class))
@@ -189,7 +194,12 @@ public class Player extends Actor
         removeTouching(Obstacle.class);
         getWorld().removeObject(health[healthCount - 1]);
         healthCount--;
-      }    
+        Greenfoot.playSound("explosionSmall.wav");
+        if(isTouching(Gem.class))
+        
+        removeTouching(Obstacle.class);
+      }
+          
       
       //hit platform but not on ground
       if(isTouching(Platform.class) && !isOnGround())
@@ -197,28 +207,23 @@ public class Player extends Actor
           yVelocity=-1;
           fall();
       }
-      
-      //if(isTouching(Gem.class))
-      //{
-      //removeTouching(Obstacle.class);
+    }
     
-      }
-      
-    
-    private void mirrorImages() 
-    {
+     private void mirrorImages() 
+     {
       for(int i = 0; i < WALK_ANIMATION.length; i++)
       {
         WALK_ANIMATION[i].mirrorHorizontally();
       }
-    }
+     }
     
     private void gameOver()
     {
         if(healthCount == 0)
         {
+             MUSIC.stop();
             Greenfoot.setWorld(new Level1());
-            
+
         }
     }
     
