@@ -154,7 +154,7 @@ public class Player extends Actor
     
     private void animator() 
     {  
-        if(frame % (15-2* speed) ==0)
+        if(frame % (15 - 2 * speed) == 0)
         {
           if(walkIndex < WALK_ANIMATION.length)
           {
@@ -186,7 +186,7 @@ public class Player extends Actor
         } 
         Greenfoot.setWorld(world);
         MUSIC.stop();
-        Greenfoot.playSound("door_open");
+        Greenfoot.playSound("door_open.wav");
       }
     
       if(isTouching(Obstacle.class))
