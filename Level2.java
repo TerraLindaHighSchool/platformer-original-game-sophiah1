@@ -42,38 +42,37 @@ public class Level2 extends World
         addObject(player,32,665);
         door.setLocation(1163,44);
         addObject(new Floor(), 600, 700);
-        addObject(new BrickWall(), 90, 575);
-        addObject(new SmBrickWall(), 700, 575);
-        addObject(new BrickWall(), 1000, 575);
-        addObject(new BrickWall(),276,307);
-        addObject(new SmBrickWall(), 951,162 );
-        addObject(new Bomb(GRAVITY), 1039,352);
+        addObject(new SmBrickWall(), 855,379);
+        addObject(new BrickWall(), -65,578);
+        addObject(new Cop(GRAVITY), 537,387);
         addObject(new BrickWall(),1220,105);
-        addObject(new Bomb(GRAVITY),550, 770);
-        addObject(new BrickWall(),310,231);
-        addObject(new BrickWall(), 479,144);
-        addObject(new Bomb(GRAVITY), 200, 533);
-        addObject(new Bomb(GRAVITY), 650,110);
+        addObject(new Cop(GRAVITY),550, 770);
+        addObject(new BrickWall(), 370,152);
+        addObject(new Cop(GRAVITY),259,99);
+        addObject(new Cop(GRAVITY), 515,100);
         addObject(new TrapDoor(GRAVITY), 50, 250);
-        addObject(new TrapDoor(GRAVITY), 673,509);
         addObject(new TrapDoor(GRAVITY), 500,575);
         addObject(new Gem(), 600,780);
-        addObject(new Gem(), 602,355);
-        addObject(new Gem(), 203,181);
+        addObject(new Gem(), 344,116);
+        addObject(new Gem(), 53,218);
         addObject(new Gem(), 1030,72);
         addObject(new Gem(), 85,538);
-        addObject(new Gem(), 900,540);
-        addObject(new Gem(), 636,233);
-        addObject(new TrapDoor(GRAVITY),902, 242);
-        addObject(new TrapDoor(GRAVITY), 767,307);
-        addObject(new Gem(), 884,212);
+        addObject(new Gem(), 494,540);
+        addObject(new Gem(), 465,114);
+        addObject(new Gem(), 844,344);
         addObject(new SmBrickWall(),534,443 );
         addObject(new SmBrickWall(),667,390);
         addObject(new TrapDoor(GRAVITY), 374,513);
-        addObject(new Gem(), 514,383);
+        addObject(new Gem(), 371,465);
+        addObject(new SmBrickWall(),379,352);
+        addObject(new SmBrickWall(),262,457);
+        addObject(new SmBrickWall(),667,390);
+        addObject(new SmBrickWall(),704,246);
+        addObject(new SmBrickWall(),916,145);   
+        addObject(new TrapDoor(GRAVITY),136,312);     
 
     }
-     
+
     private void spawn()
     {
         if(Math.random() < 0.0025)
