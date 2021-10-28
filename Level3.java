@@ -8,13 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends World
 {
-    private final float GRAVITY = 0.0467f;
+    private final float GRAVITY = 0.0530f;
     private final GreenfootSound MUSIC = new GreenfootSound("bensound-epic.mp3");
-    private final int SPEED = 3;
-    private final float JUMP_FORCE = 5.6f;
+    private final int SPEED = 2;
+    private final float JUMP_FORCE = 4.6f;
     private final int MAX_HEALTH = 3;
     private final int MAX_POWERUP = 3;
-    private final Class NEXT_LEVEL = Level3.class;  
+    private final Class NEXT_LEVEL = WinSplash.class;  
+   
+    
     /**
      * Constructor for objects of class BrickWorld.
      * 
@@ -42,31 +44,25 @@ public class Level3 extends World
         addObject(player,32,665);
         door.setLocation(1163,44);
         addObject(new Floor(), 600, 700);
-        addObject(new BrickWall(), 90, 575);
-        addObject(new SmBrickWall(),908,288);
-        addObject(new BrickWall(), 1000, 575);
-        addObject(new BrickWall(),500, 390);
-        addObject(new SmBrickWall(), 908,316 );
-        addObject(new Bomb(GRAVITY), 1089, 507);
-        addObject(new BrickWall(),776,400);
-        addObject(new Bomb(GRAVITY),691,152);
-        addObject(new BrickWall(),50, 250);
-        addObject(new BrickWall(),625,196);
-        addObject(new Bomb(GRAVITY), 679,136);
-        addObject(new SmBrickWall(), 1139, 104);
-        addObject(new TrapDoor(GRAVITY), 50, 250);
-        addObject(new TrapDoor(GRAVITY), 355,315);
-        addObject(new TrapDoor(GRAVITY), 455,628);
+        addObject(new SmBrickWall(), 855,379);
+        addObject(new Cop(GRAVITY),550, 770);
+        addObject(new TrapDoor(GRAVITY), 1082,453);
         addObject(new Gem(), 600,780);
-        addObject(new Gem(), 602,355);
-        addObject(new Gem(), 152,218);
-        addObject(new Gem(), 1030,72);
-        addObject(new Gem(), 85,538);
-        addObject(new Gem(), 900,540);
-        addObject(new Bomb (GRAVITY), 179, 540);
-        addObject(new Bomb (GRAVITY), 1089, 515);
+        addObject(new TrapDoor(GRAVITY), 714,468);
+        addObject(new TrapDoor(GRAVITY), 573,578);
+        addObject(new TrapDoor(GRAVITY), 466,141);
+        addObject(new TrapDoor(GRAVITY), 47,584);
+        addObject(new TrapDoor(GRAVITY), 854,192);
+        addObject(new SmBrickWall(), 1040,279);
+        addObject(new SmBrickWall(), 1138,104);
+        addObject(new SmBrickWall(), 686,279);
+        addObject(new SmBrickWall(), 473,379);
+        addObject(new SmBrickWall(), 855,563);
+        addObject(new SmBrickWall(), 308,585);
+        addObject(new SmBrickWall(), 172,455);
+        addObject(new SmBrickWall(), 84,220);
+        addObject(new SmBrickWall(), 668,65);
 
-       
     }
      
     private void spawn()

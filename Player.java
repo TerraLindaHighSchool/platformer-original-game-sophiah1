@@ -207,8 +207,14 @@ public class Player extends Actor
           yVelocity=-1;
           fall();
       }
+      
+        if(isTouching(Collecteble.class))
+      {
+        removeTouching(Collecteble.class);
+      }
+      
     }
-    
+     
      private void mirrorImages() 
      {
       for(int i = 0; i < WALK_ANIMATION.length; i++)
@@ -233,5 +239,5 @@ public class Player extends Actor
         return ground !=null;
         
     }
-     
+    
 }

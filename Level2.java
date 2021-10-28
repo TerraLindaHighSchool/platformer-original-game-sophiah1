@@ -58,7 +58,7 @@ public class Level2 extends World
         addObject(new Gem(), 1030,72);
         addObject(new Gem(), 85,538);
         addObject(new Gem(), 494,540);
-        addObject(new Gem(), 465,114);
+        addObject(new Gem(), 444,111);
         addObject(new Gem(), 844,344);
         addObject(new SmBrickWall(),534,443 );
         addObject(new SmBrickWall(),667,390);
@@ -70,7 +70,6 @@ public class Level2 extends World
         addObject(new SmBrickWall(),704,246);
         addObject(new SmBrickWall(),916,145);   
         addObject(new TrapDoor(GRAVITY),136,312);     
-
     }
 
     private void spawn()

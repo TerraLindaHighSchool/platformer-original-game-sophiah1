@@ -47,13 +47,13 @@ public class Level1 extends World
         addObject(new BrickWall(), 1000, 575);
         addObject(new BrickWall(),500, 390);
         addObject(new SmBrickWall(), 1000,390 );
-        addObject(new Bomb(GRAVITY), 1039,352);
+        addObject(new Bomb2(GRAVITY), 1039,352);
         addObject(new BrickWall(),1220,105);
-        addObject(new Bomb(GRAVITY),550, 770);
+        addObject(new Bomb2(GRAVITY),550, 770);
         addObject(new BrickWall(),50, 250);
         addObject(new BrickWall(), 600, 150);
-        addObject(new Bomb(GRAVITY), 200, 533);
-        addObject(new Bomb(GRAVITY), 650,110);
+        addObject(new Bomb2(GRAVITY), 200, 533);
+        addObject(new Bomb2(GRAVITY), 650,110);
         addObject(new TrapDoor(GRAVITY), 50, 250);
         addObject(new TrapDoor(GRAVITY), 500,390);
         addObject(new TrapDoor(GRAVITY), 500,575);
